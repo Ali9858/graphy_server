@@ -1,12 +1,13 @@
 FROM node:20.20.2-alpine3.23
+
 COPY graphserver.js .
 COPY package.json .
 COPY UScities.json .
 
-RUN apt-get update && \
-    apt-get upgrade -y && \
+RUN apk update && \
+    apk upgrade && \
     npm install && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/cache/apk/*
 
 EXPOSE 4000
 
