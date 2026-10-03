@@ -4,7 +4,10 @@ COPY graphserver.js .
 COPY package.json .
 COPY UScities.json .
 
-RUN npm install
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    npm install && \
+    rm -rf /var/lib/apt/lists/*
 
 EXPOSE 4000
 
